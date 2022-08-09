@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const selections = [
+            {
+                name: 'rock',
+                beats: 'scissors'
+            },
+            {
+                name: 'paper',
+                beats: 'rock'
+            },
+            {
+                name: 'scissors',
+                beats: 'paper'
+            }
+        ]
+
+        function getComputerSelection(){
+            let randomSelection = Math.floor(Math.random() * selections.length);
+            return(randomSelection)
+        }
+
+        let computerSelection = getComputerSelection();
+        
+        function getUserSelection(){
+            let saveUserSelection = prompt('type rock, paper, or scissors')
+            return(saveUserSelection)
+        }
+
+        let userSelection = getUserSelection();
+
+        function playGame(){
+            if (computerSelection === 0 && userSelection === 'rock'){
+                console.log('Tie')
+                let result = 'Tie'
+                return(result)
+            }
+            else if (computerSelection === 1 && userSelection === 'paper'){
+                console.log('Tie')
+                let result = 'Tie'
+                return(result)
+            }
+            else if (computerSelection === 2 && userSelection === 'scissors'){
+                console.log('Tie')
+                let result = 'Tie'
+                return(result)
+            }
+            else if (computerSelection === 0 && userSelection === 'paper'){
+                console.log('You Win!')
+                let result = 'You Win!'
+                return(result)
+            }
+            else if (computerSelection === 1 && userSelection === 'scissors'){
+                console.log('You Win!')
+                let result = 'You Win!'
+                return(result)
+            }
+            else if (computerSelection === 2 && userSelection === 'rock'){
+                console.log('You Win!')
+                let result = 'You Win!'
+                return(result)
+            }
+            else if (computerSelection === 0 && userSelection === 'scissors'){
+                console.log('You lose, try again!')
+                let result = 'You lose, try again!'
+                return(result)
+            }
+            else if (computerSelection === 1 && userSelection === 'rock'){
+                console.log('You lose, try again!')
+                let result = 'You lose, try again!'
+                return(result)
+            }
+            else if (computerSelection === 2 && userSelection === 'paper'){
+                console.log('You lose, try again!')
+                let result = 'You lose, try again!'
+                return(result)
+            }
+            else console.log('wrong input')
+        }
+
+        let computerScore = 0
+        let userScore = 0
+        let gameStatus = null
+
+        for (let i = 0; i < 5; i++) {
+            let computerSelection = getComputerSelection();
+            let userSelection = getUserSelection();
+            let = gameStatus = playGame();
+            if(gameStatus === 'Tie')
+            computerScore++, userScore++
+            else if (gameStatus === 'You Win!')
+            userScore++
+            else if(gameStatus === 'You lose, try again!')
+            computerScore++
+            else console.log('something wrong')
+
+        }
+
+        console.log(computerSelection);
+        console.log(userSelection);
+        playGame();
+
+    </script>
+</body>
+</html>
