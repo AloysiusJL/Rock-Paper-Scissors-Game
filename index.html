@@ -4,9 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>✊✋✌</title>
+    <link href="output.css" rel="stylesheet">
 </head>
-<body>
-    <script src="app.js"></script>
+<body class="bg-black">
+    <div>
+        <h1 class="text-white text-center text-6xl font-serif mb-32">You VS Computer!</h1>
+    </div>
+
+    <div class="flex gap-7 justify-center text-white text-lg sm:text-2xl sm:text-2xl">
+        <p>Your Score :</p>
+            <p id="yourScore">0</p>
+        <p class="sm:pl-48 pl-0">Computer Score :</p>
+            <p id="computerScore">0</p>
+    </div>
+
+    <div class="grid grid-cols-3 justify-items-center mt-20">
+        <button class='btn text-4xl px-4 py-3 hover:bg-gray-700 bg-gray-800 shadow-black rounded-2xl ' id = 'rockButton'>✊</button>
+        <button class='btn text-4xl px-4 py-3 hover:bg-gray-700 bg-gray-800 shadow-black rounded-2xl ' id = 'paperButton'>✋</button>
+        <button class='btn text-4xl px-4 py-3 hover:bg-gray-700 bg-gray-800 shadow-black rounded-2xl ' id = 'scissorsButton' >✌</button>
+        <p class="text-white ">Rock</p>
+        <p class="text-white">Paper</p>
+        <p class="text-white">Scissors</p>
+    </div>
+
+    <div class="mt-56 justify-items-center grid grid-cols-3 w-full h-auto">
+        <p id="playerChoice" class="text-4xl"></p>
+        <p id="result" class="text-white text-xl text-center"></p>
+        <p id="computerChoice" class="text-4xl"></p>
+    </div>
+
+    <script src="app-ui.js"></script>
 </body>
 </html>
