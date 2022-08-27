@@ -563,6 +563,14 @@ video {
   margin-top: 14rem;
 }
 
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
+.mt-28 {
+  margin-top: 7rem;
+}
+
 .flex {
   display: flex;
 }
@@ -571,40 +579,8 @@ video {
   display: grid;
 }
 
-.h-fit {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-
-.h-1\/2 {
-  height: 50%;
-}
-
-.h-52 {
-  height: 13rem;
-}
-
-.h-full {
-  height: 100%;
-}
-
 .h-auto {
   height: auto;
-}
-
-.w-fit {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.w-1\/2 {
-  width: 50%;
-}
-
-.w-52 {
-  width: 13rem;
 }
 
 .w-full {
@@ -613,14 +589,6 @@ video {
 
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.justify-start {
-  justify-content: flex-start;
 }
 
 .justify-center {
@@ -649,11 +617,6 @@ video {
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
 
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -662,26 +625,6 @@ video {
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-}
-
-.pr-10 {
-  padding-right: 2.5rem;
-}
-
-.pr-28 {
-  padding-right: 7rem;
-}
-
-.pr-32 {
-  padding-right: 8rem;
-}
-
-.pr-48 {
-  padding-right: 12rem;
-}
-
-.pr-0 {
-  padding-right: 0px;
 }
 
 .pl-0 {
@@ -701,9 +644,9 @@ video {
   line-height: 1;
 }
 
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .text-4xl {
@@ -711,14 +654,14 @@ video {
   line-height: 2.5rem;
 }
 
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .text-white {
@@ -741,26 +684,12 @@ video {
 }
 
 @media (min-width: 640px) {
-  .sm\:pr-0 {
-    padding-right: 0px;
-  }
-
-  .sm\:pr-48 {
-    padding-right: 12rem;
+  .sm\:mt-56 {
+    margin-top: 14rem;
   }
 
   .sm\:pl-48 {
     padding-left: 12rem;
-  }
-
-  .sm\:text-lg {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
-
-  .sm\:text-sm {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
   }
 
   .sm\:text-2xl {
@@ -768,8 +697,8 @@ video {
     line-height: 2rem;
   }
 
-  .sm\:text-blue-600 {
-    --tw-text-opacity: 1;
-    color: rgb(37 99 235 / var(--tw-text-opacity));
+  .sm\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
   }
 }
