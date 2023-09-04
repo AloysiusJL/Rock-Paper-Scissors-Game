@@ -1,79 +1,110 @@
-let computerScore = 0
-let userScore = 0
+let computerScore = 0;
+let userScore = 0;
+let gameRound = 0;
+let gameEnded = false;
 
-    // get and save computer choice
-    function getComputerChoice() {
-        const arrOfChoice = [ "✊" , "✋" , "✌" ]
-        const randomNumber = Math.floor(Math.random() *arrOfChoice.length)
-        const computerChoice = arrOfChoice[randomNumber]
-        return computerChoice
+const modalInstructions = document.getElementById('instructionsModal');
+const modalWinner = document.getElementById('winnerModal');
+const instructions = document.getElementById('instructions');
+const winnerMessage = document.getElementById('winnerMessage');
+const playAgainBtn = document.getElementById('playAgainBtn');
+
+const buttons = document.querySelectorAll('.btn');
+buttons.forEach(button => button.addEventListener('click', playGame));
+
+modalInstructions.style.display = 'block';
+
+function playGame(e) {
+    if (gameEnded) return;
+
+    const userSelection = e.target.getAttribute('data-choice');
+    const computerSelection = getComputerChoice();
+
+    const saveResult = playRound(userSelection, computerSelection);
+
+    updateUserInterface(userSelection, computerSelection, saveResult);
+    checkWinner();
+
+    // Indicate the player's choice and the computer's choice
+    document.getElementById('playerChoice').textContent = `You chose: ${userSelection}`;
+    document.getElementById('computerChoice').textContent = `Computer chose: ${computerSelection}`;
+}
+
+function getComputerChoice() {
+    const arrOfChoice = ["✊", "✋", "✌"];
+    const randomNumber = Math.floor(Math.random() * arrOfChoice.length);
+    const computerChoice = arrOfChoice[randomNumber];
+    return computerChoice;
+}
+
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection === computerSelection) {
+        return 'It\'s a tie!';
+    } else if (
+        (playerSelection === '✊' && computerSelection === '✌') ||
+        (playerSelection === '✋' && computerSelection === '✊') ||
+        (playerSelection === '✌' && computerSelection === '✋')
+    ) {
+        userScore++;
+        return 'You win this round!';
+    } else {
+        computerScore++;
+        return 'Computer wins this round.';
     }
+}
 
-    function playRound (playerSelection , computerSelection){
-    
-        // tied secenario
-        if (playerSelection == '✊' && computerSelection == '✊') {
-        return 'You Tied, You Both Pick Paper'}
-        else if (playerSelection == '✌' && computerSelection == '✌') {
-        return 'You Tied, You Both Pick Paper'}
-        else if (playerSelection == '✋' && computerSelection == '✋') {
-        return 'You Tied, You Both Pick Paper'}
-    
-        //win secenario
-        else if (playerSelection == '✊' && computerSelection == '✌'){
-            userScore++
-            return 'Congratulation You Win!!'
+function updateUserInterface(userSelection, computerSelection, result) {
+    const currentUserScore = document.getElementById('yourScore');
+    const currentComputerScore = document.getElementById('computerScore');
+    const showResult = document.getElementById('result');
+
+    currentUserScore.textContent = userScore;
+    currentComputerScore.textContent = computerScore;
+    showResult.textContent = result;
+}
+
+function checkWinner() {
+    gameRound++;
+    if (userScore === 5 || computerScore === 5) {
+        gameEnded = true;
+        if (userScore === 5) {
+            winnerMessage.textContent = 'Congratulations! You win the game!';
+        } else {
+            winnerMessage.textContent = 'Computer wins the game. Better luck next time!';
         }
-        else if (playerSelection == '✋' && computerSelection == '✊'){
-            userScore++
-            return 'Congratulation You Win!!'
-        }
-        else if (playerSelection == '✌' && computerSelection == '✋'){
-            userScore++
-            return 'Congratulation You Win!!'
-        }
-    
-        //lose seceneraio
-        else if (playerSelection == '✊' && computerSelection == '✋'){
-            computerScore++
-            return 'You Lose, Better Luck Next Time'
-        }
-        else if (playerSelection == '✋' && computerSelection == '✌'){
-            computerScore++
-            return 'You Lose, Better Luck Next Time'
-        }
-        else if (playerSelection == '✌' && computerSelection == '✊'){
-            computerScore++
-            return 'You Lose, Better Luck Next Time'
-        }
+        modalWinner.style.display = 'block';
     }
+}
 
+// Event listeners for modals
+modalInstructions.addEventListener('click', (e) => {
+    if (e.target === modalInstructions || e.target.classList.contains('close')) {
+        closeModal(modalInstructions);
+    }
+});
 
-    const button = document.querySelectorAll('button')
-    button.forEach(button => button.addEventListener('click' , e =>{
-        const userSelection = button.innerText;
-        console.log(userSelection);
-        const computerSelection = getComputerChoice();
-        console.log(computerSelection);
+modalWinner.addEventListener('click', (e) => {
+    if (e.target === modalWinner || e.target.classList.contains('close')) {
+        closeModal(modalWinner);
+        resetGame();
+    }
+});
 
-        const currentUserScore = document.getElementById('yourScore')
-        const currentComputerScore = document.getElementById('computerScore')
+playAgainBtn.addEventListener('click', () => {
+    closeModal(modalWinner);
+    resetGame();
+});
 
-        const saveResult = playRound(userSelection , computerSelection)
+function closeModal(modal) {
+    modal.style.display = 'none';
+}
 
-        currentUserScore.textContent = userScore;
-        currentComputerScore.textContent = computerScore;
-
-        console.log("C: " + computerScore)
-        console.log("U: " + userScore)
-
-        const showResult = document.getElementById('result')
-        showResult.textContent = saveResult
-
-        const showPlayerChoice = document.getElementById('playerChoice')
-        const showComputerChoice = document.getElementById('computerChoice')
-
-        showPlayerChoice.textContent = userSelection
-        showComputerChoice.textContent = computerSelection
-    
-    }))
+function resetGame() {
+    userScore = 0;
+    computerScore = 0;
+    gameRound = 0;
+    gameEnded = false;
+    document.getElementById('yourScore').textContent = userScore;
+    document.getElementById('computerScore').textContent = computerScore;
+    instructions.textContent = 'Click on your choice to start the game.';
+}
